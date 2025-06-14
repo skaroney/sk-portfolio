@@ -519,7 +519,7 @@
       vertical-align: top;
       width: 100%;
       height: auto;
-      border: 1px solid var(--frame-border);
+      border: 1px solid white;
 
     }
 
@@ -778,7 +778,16 @@
         .vmware { color: #607078; }
         .oraclevm { color: #f80000; }
         .nagios { color: #1a9cdf; }
+        .kivy { color: #326ce5; }
         /* Custom icon fallbacks */
+
+        .fa-kivy:before {
+            content: "KV";
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
         .fa-ansible:before {
             content: "A";
             font-family: sans-serif;
@@ -1197,6 +1206,93 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  /*this is what prevents the last row from stretching full-width */
+}
+.flex-container:after {
+  content: "";
+  flex-grow: 10;
+}
+
+.flex-card {
+  background: #ddd;
+  margin: 0.5em;
+  min-width: 280px;
+  min-height: 90px;
+  padding: 0.75em;
+  /* below is the key to make this work */
+  display: flex;
+  align-items: stretch;
+  flex-grow: 1;
+}
+.flex-card h1, .flex-card .description {
+  padding: 0 0.5em;
+}
+.flex-card h1 {
+  margin: 0;
+  align-self: center;
+}
+.flex-card .description {
+  border-left: 1px solid;
+  padding: 0 1em;
+  /* below is the flexbox magic */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+    
+    .loader {
+      margin: auto;
+      width: 60px;
+      height: 50px;
+      position: relative;
+    }
+    
+    .cog {
+      position: absolute;
+      color: #aaa;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    
+    .cog-main {
+      font-size: 45px;
+
+      left: 0;
+      animation-name: spin-clockwise;
+      animation-duration: 2s; /* Slowed from 2s */
+    }
+    
+    .cog-top {
+      font-size: 30px;
+      top: 5px;
+      left: 45px;
+      animation-name: spin-counter;
+      animation-duration: 1.3s; /* Slowed from 1.3s */
+    }
+    
+    .cog-side {
+      font-size: 25px;
+      top: 30px;
+      left: 36px;
+      animation-name: spin-clockwise;
+      animation-duration: 1.7s; /* Slowed from 1.7s */
+    }
+    
+    @keyframes spin-clockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes spin-counter {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
 /* Contact Cards */
 
 
@@ -1287,8 +1383,13 @@
     @media (max-width: 576px) {
       .self-intro  h3,.self-intro h1,.self-intro p{
         padding:0 20px 0 25px;
-      }
 
+      }
+      .self-intro  h3,.self-intro h1{
+        font-size: var(--font-size-24);
+        font-weight: 600;
+        
+      }
     .snip1556{
     padding-left: 25px;
     }
